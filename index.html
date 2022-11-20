@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TAMK Weather</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Own styles override -->
+    <link href="styles.css" rel="stylesheet">
+</head>    
+<body>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark" aria-label="Third navbar example">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#" onclick="fetchLatest50()">TAMK weather data</a>
+          <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+    
+          <div class="navbar-collapse collapse" id="navbarsExample03">
+            <ul class="navbar-nav me-auto mb-2 mb-sm-0">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="signal-dropdown" data-bs-toggle="dropdown" aria-expanded="false">Select signal</a>
+                <ul class="dropdown-menu" id="signal-menu" aria-labelledby="signal-dropdown">
+                    <!-- Signal selection dropdown, populated by JS -->
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="time-dropdown" data-bs-toggle="dropdown" aria-expanded="false">Select time period</a>
+                <ul class="dropdown-menu" aria-labelledby="time-dropdown">
+                  <li><a class="dropdown-item" href="#" onclick="setTime('Now')">Now</a></li>
+                  <li><a class="dropdown-item" href="#" onclick="setTime('24 h')">24 h</a></li>
+                  <li><a class="dropdown-item" href="#" onclick="setTime('48 h')">48 h</a></li>
+                  <li><a class="dropdown-item" href="#" onclick="setTime('72 h')">72 h</a></li>
+                  <li><a class="dropdown-item" href="#" onclick="setTime('1 week')">1 week</a></li>
+                  <li><a class="dropdown-item" href="#" onclick="setTime('1 month')">1 month</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#" onclick="setTime('Now'), setSignal('temperature')">Current temp</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#" onclick="setTime('Now'), setSignal('rain')">Current rain</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+    <div id="main-container">
+        <div id="data-container">
+            <!-- Declare headers separately, easier to clear table -->
+            <table class="table table-striped" id="data-headers">
+                <thead>
+                  <tr>
+                    <th scope="col">Signal</th>
+                    <th scope="col">Value</th>
+                    <th scope="col">Time</th>
+                  </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+            <!-- Data readings here, gets populated by javascript -->
+            <table class="table table-striped" id="data-table">
+                <thead>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+        <div id="chart-container">
+            <!-- Chart here -->
+            <canvas id="myChart" style="width:200%;max-width:700px"></canvas>
+        </div>
+    </div>
+      
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Bootstrap JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <!-- Own JS -->
+    <script src="script.js"></script>
+</body>
+</html>

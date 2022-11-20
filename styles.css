@@ -1,0 +1,14 @@
+#main-container{
+    display: flex;
+}
+
+#data-container{
+    width: 35%;
+    height: calc(100vh - 70px);
+    overflow-y: scroll;
+}
+
+#chart-container{
+    margin-top: 30vh;
+    margin-left: 5vw;
+}
